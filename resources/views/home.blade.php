@@ -4,5 +4,5 @@
   </x-slot:heading>
 
   {{-- stuff added to main --}}
-  <h1>Homepage main</h1>
+  <h1>Yo from homepage</h1>
 </x-layout>
