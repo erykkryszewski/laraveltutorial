@@ -1,38 +1,10 @@
 <?php
 
 namespace App\Models;
-use Illuminate\Support\Arr;
+use Illuminate\Database\Eloquent\Model;
 
-class Job {
-  public static function all(): array {
-    return [
-      [
-        'id' => 1,
-        'title' => 'Director',
-        'salary' => '$50,000'
-      ],
-      [
-        'id' => 2,
-        'title' => 'Programmer',
-        'salary' => '$10,000'
-      ],
-      [
-        'id' => 3,
-        'title' => 'Teacher',
-        'salary' => '$40,000'
-      ]
-    ];
-  }
+class Job extends Model {
+  protected $table = 'job_listings'; // specify the table name if it differs from the model name
 
-    public static function find(int $id): array {
-      // find first job with matching id
-      $job = Arr::first(self::all(), fn ($job) => $job['id'] === $id);
-
-      // if not found, throw 404
-      if ($job === null) {
-        abort(404, 'job not found');
-      }
-
-      return $job;
-    }
+  protected $fillable = ['title', 'salary']; // specify which attributes can be mass assigned
 }
